@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生成绩管理系统登录</title>
+    <link rel="shortcut icon" href="{% static 'icons/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome-free-5.15.4-web/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+<div class="container">
+    <div class="form-box">
+        <h1 style="text-align: center;">用户登录</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="choice-identity">
+                <button type="button" id="student" style="background-color: {{ bu_c.0 }}">
+                    <i class="fas fa-user-graduate"></i> 我是学生
+                </button>
+                <button type="button" id="teacher" style="background-color: {{ bu_c.1 }}">
+                    <i class="fas fa-user-edit"></i> 我是老师
+                </button>
+                <label>
+                    <input type="text" id="uid" name="uid" value="{{ user_id }}" hidden>
+                </label>
+            </div>
+            <div class="user-info">
+                <label>
+                    <i class="fas fa-user"></i>
+                    账号 <input type="text" name="uname" id="uname" placeholder="输入学号" value="{{ uname }}" required>
+                </label>
+                <span class="error-msg">{{ error_msg.account }}</span>
+                <label>
+                    <i class="fas fa-lock"></i>
+                    密码 <input type="password" name="upassword" placeholder="输入密码" required>
+                </label>
+                <span class="error-msg">{{ error_msg.pwd }}</span>
+            </div>
+            <div class="login-button">
+                <button type="submit" class="my-btn-login">登 录</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'plugins/jquery-3.6.1.min.js' %}"></script>
+<script src="{% static 'plugins/fontawesome-free-5.15.4-web/js/all.min.js' %}"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#student").click(function () {
+            $(this).css("background", "rgb(56, 101, 252)");
+            $("#teacher").css("background", "rgba(56, 101, 252, 0.4)");
+            $("#uid").val("s");
+            $("#uname").attr("placeholder", "输入学号");
+        });
+        $("#teacher").click(function () {
+            $(this).css("background", "rgb(56, 101, 252)");
+            $("#student").css("background", "rgba(56, 101, 252, 0.4)");
+            $("#uid").val("t");
+            $("#uname").attr("placeholder", "输入工号");
+        });
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+{% extends 'student_mod.html' %}
+{% load static %}
+
+{% block title %}成绩管理系统-个人主页{% endblock %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'plugins/jquery-ui-1.13.2/jquery-ui.min.css' %}">
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="my-content-box" id="contentStuBox">
+            <div style="text-align: center;color: #3284fd;margin: 40px 0">
+                <i class="fas fa-book-reader fa-10x"></i>
+            </div>
+            <div class="my-stu-info-box">
+                <table class="stu-info-table">
+                    <tr>
+                        <td>学号</td>
+                        <td>{{ stu_info.Sno }}</td>
+                    </tr>
+                    <tr>
+                        <td>姓名</td>
+                        <td>{{ stu_info.Sname }}</td>
+                    </tr>
+                    <tr>
+                        <td>性别</td>
+                        <td>
+                            {% if stu_info.Ssex == 1 %}
+                                <i class="fas fa-mars" style="color: blue"></i>
+                            {% else %}
+                                <i class="fas fa-venus" style="color: deeppink"></i>
+                            {% endif %}
+                            {{ stu_info.get_Ssex_display }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>年龄</td>
+                        <td id="age_text" class="{{ stu_info.Birthdate }}"></td>
+                    </tr>
+                    <tr>
+                        <td>入学日期</td>
+                        <td>{{ stu_info.AdmissionDate }}</td>
+                    </tr>
+                    <tr>
+                        <td>专业</td>
+                        <td>{{ stu_info.Sdept }}</td>
+                    </tr>
+                    <tr>
+                        <td>班级</td>
+                        <td>{{ stu_info.Sclass }}</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">
+                            更多操作 <i class="fas fa-toolbox"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-primary" id="btnEditStuInfo"
+                                    data-bs-toggle="modal" data-bs-target="#editPersonInfo">
+                                <i class="fas fa-edit"></i> 编辑个人信息
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-danger" id="btnUpdateUserPwd"
+                                    data-bs-toggle="modal" data-bs-target="#updatePasswordForm">
+                                <i class="fab fa-expeditedssl"></i> 修改用户密码
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-warning" id="btnUserLogout">
+                                <i class="fas fa-sign-out-alt"></i> 退 出 登 录
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Student Person Info -->
+    <div class="modal fade" id="editPersonInfo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">编辑个人信息</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" id="stuPersonInfoForm" novalidate>
+                        {% for field in info_form %}
+                            <div class="input-group mb-3">
+                                <label for="id_{{ field.name }}">
+                                    <span class="input-group-text">{{ field.label }}</span>
+                                </label>
+                                {{ field }}
+                                <span class="error-msg" style="color: red">{{ field.errors.0 }}</span>
+                            </div>
+                        {% endfor %}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">退 出</button>
+                    <button type="button" class="btn btn-success" id="btnSavaStuInfo">确定更改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Student Account -->
+    <div class="modal fade" id="updatePasswordForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">修改密码</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="stuUpdatePwdInfo" novalidate>
+                        <div class="input-group mb-3">
+                            <label for="id_Saccount">
+                                <span class="input-group-text">账号</span>
+                            </label>
+                            <input type="text" name="Saccount" class="form-control" id="id_Saccount" value="{{ stu_info.Sno }}"
+                                   readonly="readonly">
+                        </div>
+                        {% for field in acount_form %}
+                            <div class="input-group mb-3">
+                                <label for="id_{{ field.name }}">
+                                    <span class="input-group-text">{{ field.label }}</span>
+                                </label>
+                                {{ field }}
+                                <span class="error-msg" style="color: red">{{ field.errors.0 }}</span>
+                            </div>
+                        {% endfor %}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">退 出</button>
+                    <button type="button" class="btn btn-danger" id="btnUpdatePwdSend">确 定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'plugins/jquery-ui-1.13.2/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/stu_perinfo.js' %}"></script>
+{% endblock %}

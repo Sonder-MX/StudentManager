@@ -1,0 +1,91 @@
+/* 首页 */
+.my-container {
+    border-left: 1px solid rgba(255, 255, 255, 0.85);
+    border-right: 1px solid rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 0 3%;
+}
+
+.my-card-sty {
+    margin: 10px 0;
+    border-radius: 10px;
+    background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.1));
+    height: 12rem;
+}
+
+.my-card-sty h5 {
+    font-weight: bolder;
+}
+
+.my-card-sty a {
+    color: #000000eb;
+    text-decoration: none;
+}
+
+/* 成绩查询 */
+table {
+    white-space: nowrap;
+}
+
+th, td {
+    text-align: center;
+}
+
+.find-table {
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+.find-table div {
+    background-color: rgba(243, 236, 236, 0.35);
+}
+
+/* 成绩分析 */
+.bg-my-transp {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#bar_radar_text, #pie_text, #plot_text {
+    text-indent: 30px;
+}
+
+#bar_radar_text::before {
+    content: "Hi~ ";
+}
+
+/* 学生个人主页 */
+.my-content-box {
+    background-color: rgba(255, 255, 255, 0.35);
+    padding: 20px 0;
+}
+
+.my-stu-info-box {
+    width: 70%;
+    margin: auto;
+}
+
+.stu-info-table {
+    width: 100%;
+    background: rgba(212, 245, 248, 0.5);
+    box-shadow: 12px 12px 12px rgba(52, 101, 98, 0.7),
+    -12px -12px 12px rgba(170, 250, 250, 0.7);
+}
+
+.stu-info-table td {
+    border-bottom: 1px solid rgba(183, 180, 180, 0.8);
+    padding: 16px 0;
+    font-weight: bolder;
+}
+
+.stu-info-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+#stuPersonInfoForm input, #stuUpdatePwdInfo input {
+    caret-color: auto !important;
+}
+
+#ui-datepicker-div {
+    z-index: 100000 !important;
+    top: 0 !important;
+}

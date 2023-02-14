@@ -1,0 +1,62 @@
+{% extends 'student_mod.html' %}
+{% load static %}
+
+{% block title %}成绩管理系统-分析成绩{% endblock %}
+
+
+{% block body_content %}
+    <div class="container bg-my-transp">
+        <h1 style="padding: 24px 0;text-align: center">
+            {{ sname }}的成绩分析报告<i class="fas fa-paste"></i>
+        </h1>
+        <div class="card">
+            <div class="card-header">具体情况</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div id="stu_bar" style="height: 380px"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="stu_radar" style="height: 380px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p id="bar_radar_text"></p>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-lg-4" style="margin-top: 10px">
+                <div class="card">
+                    <div class="card-header">成绩比重</div>
+                    <div class="card-body">
+                        <div id="stu_pie" style="height: 380px"></div>
+                    </div>
+                    <div class="card-footer">
+                        <p id="pie_text"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8" style="margin-top: 10px">
+                <div class="card">
+                    <div class="card-header">班级整体水平</div>
+                    <div class="card-body">
+                        <div id="stu_plot" style="height: 380px"></div>
+                    </div>
+                    <div class="card-footer">
+                        <p id="plot_text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'plugins/echarts.min.js' %}"></script>
+    <script type="text/javascript">
+        const sno = '{{ sno }}';
+        const sname = '{{ sname }}';
+    </script>
+    <script src="{% static 'js/stu_charts.js' %}"></script>
+{% endblock %}

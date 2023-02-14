@@ -1,0 +1,31 @@
+@font-face {
+    font-family: SourceHanSans;
+    src: url("../font/SourceHanSans.otf");
+}
+
+@font-face {
+    font-family: SourceCodePro;
+    src: url("../font/SourceCodePro.ttf");
+}
+
+* {
+    font-family: SourceCodePro, SourceHanSans, sans-serif;
+}
+
+div,
+span,
+p {
+    caret-color: transparent;
+}
+
+hr {
+    margin: 15px 0;
+    border: 0;
+    height: 2px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+}
+
+/* 重写 */
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0, 0, 0, .9);
+}

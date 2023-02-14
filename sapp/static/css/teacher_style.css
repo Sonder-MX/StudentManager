@@ -1,0 +1,23 @@
+/* 首页 */
+.my-container {
+    border-left: 1px solid rgba(255, 255, 255, 0.85);
+    border-right: 1px solid rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 0 3%;
+}
+
+.my-card-sty {
+    margin: 10px 0;
+    border-radius: 10px;
+    background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.1));
+    height: 12rem;
+}
+
+.my-card-sty h5 {
+    font-weight: bolder;
+}
+
+.my-card-sty a {
+    color: #000000eb;
+    text-decoration: none;
+}

@@ -1,0 +1,110 @@
+@font-face {
+    font-family: SourceHanSans;
+    src: url("../font/SourceHanSans.otf");
+}
+
+@font-face {
+    font-family: SourceCodePro;
+    src: url("../font/SourceCodePro.ttf");
+}
+
+* {
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+    font-family: SourceCodePro, SourceHanSans, sans-serif;
+}
+
+body {
+    height: 100vh;
+    /* 弹性布局 水平+垂直居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #89f5f5, #f8aae2);
+}
+
+div,
+span,
+p {
+    caret-color: transparent;
+}
+
+.container {
+    width: 500px;
+    height: 400px;
+    border-radius: 34px;
+    background-color: rgb(135, 226, 238);
+    box-shadow: 9px 9px 18px #548c94,
+    -9px -9px 18px #baffff;
+}
+
+.form-box {
+    margin: 5px 20px;
+}
+
+.choice-identity {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.choice-identity button {
+    border: #d2c7e7 solid 2px;
+    color: #ffffff;
+    border-radius: 100px;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 10px 50px;
+}
+
+.user-info {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.user-info input {
+    caret-color: auto;
+    padding: 8px;
+    font-size: 16px;
+    width: 70%;
+    border-radius: 8px;
+    border: rgba(121, 120, 120, 0.8) solid 2px;
+    outline: none;
+    background-color: rgba(218, 228, 236, 0.34);
+}
+
+.user-info input:focus {
+    border: rgb(0, 0, 0) solid 2px;
+}
+
+.login-button {
+    text-align: center;
+    margin-top: 26px;
+}
+
+.my-btn-login {
+    background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA 51%, #1FA2FF 100%);
+    padding: 10px 40px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    border: none;
+}
+
+.my-btn-login:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.error-msg {
+    display: block;
+    height: 24px;
+    color: #c40000;
+    margin-bottom: 10px;
+    text-align: center;
+}

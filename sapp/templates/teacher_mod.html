@@ -1,0 +1,121 @@
+<!-- 模板 -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" href="{% static 'icons/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-5.1.3/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome-free-5.15.4-web/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my_mod.css' %}">
+    <link rel="stylesheet" href="{% static 'css/teacher_style.css' %}">
+    <style>
+        body {
+            background: linear-gradient(90deg, rgba(243, 129, 195, 0.8), rgba(110, 238, 222, 0.8));
+        }
+
+        .bg-mystyle {
+            background: linear-gradient(90deg, rgba(255, 247, 247, 0.7), rgba(161, 224, 255, 0.8), rgba(146, 219, 255, 0.9));
+        }
+    </style>
+    {% block style_link %}{% endblock %}
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-mystyle fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/thome/"><i class="fas fa-school"></i> 成绩管理系统</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item ms-3">
+                    <a class="nav-link active" aria-current="page" href="/thome/">
+                        <i class="fas fa-home"></i>首页
+                    </a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="nav-link" href="/thome/tfind">
+                        <i class="fas fa-search"></i>成绩查询
+                    </a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-chart-line"></i>成绩分析
+                    </a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="fas fa-paper-plane"></i>
+                        关于本站
+                    </a>
+                </li>
+                <li class="nav-item dropdown ms-3">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fab fa-buffer"></i>更多
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                        style="background-color: rgba(255,255,255,0.8);border-radius: 14px">
+                        <li><a class="dropdown-item" href="https://leetcode.cn/" target="_blank">刷会算法</a></li>
+                        <li><a class="dropdown-item" href="https://www.baidu.com" target="_blank">百度一下</a></li>
+                        <li>
+                            <hr>
+                        </li>
+                        <li><a class="dropdown-item" href="/study_hard/">什么也没有</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="clearfix">
+                <a type="button" class="btn btn-primary float-end" href="#">
+                    <i class="far fa-address-card"></i>
+                    个人主页
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div style="padding-bottom: 56px"></div>
+
+{% block body_content %}{% endblock %}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-color: rgba(255,255,255,0.85)">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalCenterTitle">关于</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <hr>
+            <div class="modal-body">
+                <p>这里是介绍</p>
+            </div>
+            <hr>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">返回</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin-bottom: 24px"></div>
+<!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
+<script src="{% static 'plugins/popper-2.11.6.js' %}"></script>
+<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+<script src="{% static 'plugins/bootstrap-5.1.3/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/fontawesome-free-5.15.4-web/js/all.min.js' %}"></script>
+<script src="{% static 'plugins/jquery-3.6.1.min.js' %}"></script>
+{% block javascript %}{% endblock %}
+</body>
+
+</html>

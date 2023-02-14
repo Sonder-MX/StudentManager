@@ -1,0 +1,91 @@
+{% extends 'student_mod.html' %}
+{% load static %}
+
+{% block title %}成绩管理系统-查询成绩{% endblock %}
+
+
+{% block body_content %}
+    <div class="container" style="background-color: rgba(255, 255, 255, 0.4);">
+        <div class="find-table">
+            <div class="card">
+                <h4 class="card-header text-white" style="background-color: #209fdf">
+                    {{ the_stu_name }}的成绩
+                </h4>
+                <div class="card-body">
+                    <table class="table table-hover table-bordered">
+                        <thead class="table-primary">
+                        <tr>
+                            <th>课程</th>
+                            <th>分数</th>
+                            <th>授课老师</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if the_stu_sc %}
+                            {% for sc in the_stu_sc %}
+                                <tr>
+                                    <td>{{ sc.Cname }}</td>
+                                    <td>{{ sc.Grade }}</td>
+                                    <td>
+                                    <span data-bs-toggle="tooltip" data-bs-placement="right" title="{{ sc.Phone }}">
+                                        {{ sc.Tname }} <i class="fas fa-mobile-alt"></i>
+                                    </span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="3">暂无数据，请耐心等待老师上传成绩！</td>
+                            </tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer" style="text-align: right;font-style: italic">
+                    如有疑问请及时联系老师
+                </div>
+            </div>
+        </div>
+        <div class="find-table">
+            <div class="card">
+                <h4 class="card-header text-white" style="background-color: #209fdf;text-align: center">
+                    {{ stu_clas }}--成绩表
+                </h4>
+                <div class="card-body">
+                    <div class="table-responsive-md">
+                        <table class="table table-hover table-bordered table-striped">
+                            <thead class="table-primary">
+                            <tr>
+                                {% for th_n in slabel %}
+                                    <th>{{ th_n }}</th>
+                                {% endfor %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if ssheet %}
+                                {% for psc in ssheet %}
+                                    <tr>
+                                        {% for i in psc %}
+                                            <td>{{ i }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+{% endblock %}
